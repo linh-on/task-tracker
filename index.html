@@ -3,91 +3,122 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Playwrite+AU+QLD:wght@100..400&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
     <title>Task Tracker</title>
   </head>
   <body>
-    <div>
-      <header>
+    <div class="container">
+      <header class="header">
         <div class="icon">
           <img src="icon.png" alt="Logo" width="48px" height="48px" />
           <h1>Task Tracker</h1>
         </div>
-        <button>Add a new task</button>
+        <button class="btn btn-large btn-open">Add a new task</button>
       </header>
 
-      <form>
-        <input type="text" placeholder="Give your task a title" />
+      <form class="task-form">
         <input type="text" placeholder="Description of the task" />
         <span>200</span>
-        <input
-          type="text"
-          placeholder="What website are associted with this? (optional)"
-        />
+        <input type="date" placeholder="Due date" />
         <select>
-          <option value="">Choose catergory</option>
+          <option value="">Choose category</option>
           <option value="school">School</option>
           <option value="work">Work</option>
           <option value="personal">Personal</option>
           <option value="family">Family</option>
           <option value="health">Health</option>
         </select>
-        <button>Post</button>
+        <button class="btn btn-large">Post</button>
       </form>
-
-      <label for="birthday">Deadline:</label>
-      <input type="date" id="birthday" name="birthday" />
-
-      <main>
+      <main class="main">
         <aside>
           <ul>
-            <li><button>All</button></li>
-            <li>
-              <button style="background-color: blue">School</button>
+            <li class="category">
+              <button class="btn btn-all">All tasks</button>
             </li>
-            <li>
-              <button style="background-color: purple">Work</button>
+            <li class="category">
+              <button class="btn btn-cat" style="background-color: #ff6f61">
+                School
+              </button>
             </li>
-            <li>
-              <button style="background-color: yellow">Personal</button>
+            <li class="category">
+              <button class="btn btn-cat" style="background-color: #6b8e23">
+                Work
+              </button>
             </li>
-            <li>
-              <button style="background-color: orange">Family</button>
+            <li class="category">
+              <button class="btn btn-cat" style="background-color: #4682b4">
+                Personal
+              </button>
             </li>
-            <li>
-              <button style="background-color: green">Health</button>
+            <li class="category">
+              <button class="btn btn-cat" style="background-color: #8a2be2">
+                Family
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn-cat" style="background-color: #da70d6">
+                Health
+              </button>
             </li>
           </ul>
         </aside>
 
         <section>
-          <h4>Here are the list of tasks:</h4>
-          <ol>
-            <li>
-              <p>
-                My homework:
-                <a href="https://canvas.uci">(Website)</a>
-              </p>
-
+          <h4 class="intro-tasks">Here are the list of tasks:</h4>
+          <ol class="tasks-list">
+            <li class="task">
               <p>I need to complete my physics homework</p>
-
-              <span style="background-color: blue">School</span>
-              <div class="vote-btn">
+              <p>[2 days left]</p>
+              <span class="tag" style="background-color: #ff6f61">School</span>
+              <div class="complete-btn">
                 <button>✅ Completed</button>
               </div>
             </li>
-            <li class="fact">
-              <p>Complete this project:</p>
+            <li class="task">
               <p>I need to complete my this project to learn about HTML</p>
-              <span class="tag" style="background-color: yellow">Personal</span>
-              <div class="vote-btn">
+              <p>[2 days left]</p>
+              <span class="tag" style="background-color: #4682b4"
+                >Personal</span
+              >
+              <div class="complete-btn">
+                <button>✅ InComplete</button>
+              </div>
+            </li>
+            <li class="task">
+              <p>I need to exercise 2 times this week</p>
+              <p>[3 days left]</p>
+              <span class="tag" style="background-color: #da70d6">Health</span>
+              <div class="complete-btn">
                 <button>❌ InComplete</button>
+              </div>
+            </li>
+            <li class="task">
+              <p>Hang out with my family once this week</p>
+              <p>[2 days left]</p>
+              <span class="tag" style="background-color: #8a2be2">Family</span>
+              <div class="complete-btn">
+                <button>❌ InComplete</button>
+              </div>
+            </li>
+            <li class="task">
+              <p>Set up a laptop for the associate dean</p>
+              <p>[1 days left]</p>
+              <span class="tag" style="background-color: #6b8e23">Work</span>
+              <div class="complete-btn">
+                <button>✅ InComplete</button>
               </div>
             </li>
           </ol>
         </section>
       </main>
     </div>
-    <script src="script.js"></script>
   </body>
 </html>
