@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Task Tracker</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <div class="icon">
+          <img src="icon.png" alt="Logo" width="48px" height="48px" />
+          <h1>Task Tracker</h1>
+        </div>
+        <button>Add a new task</button>
+      </header>
+
+      <form>
+        <input type="text" placeholder="Give your task a title" />
+        <input type="text" placeholder="Description of the task" />
+        <span>200</span>
+        <input
+          type="text"
+          placeholder="What website are associted with this? (optional)"
+        />
+        <select>
+          <option value="">Choose catergory</option>
+          <option value="school">School</option>
+          <option value="work">Work</option>
+          <option value="personal">Personal</option>
+          <option value="family">Family</option>
+          <option value="health">Health</option>
+        </select>
+        <button>Post</button>
+      </form>
+
+      <label for="birthday">Deadline:</label>
+      <input type="date" id="birthday" name="birthday" />
+
+      <main>
+        <aside>
+          <ul>
+            <li><button>All</button></li>
+            <li>
+              <button style="background-color: blue">School</button>
+            </li>
+            <li>
+              <button style="background-color: purple">Work</button>
+            </li>
+            <li>
+              <button style="background-color: yellow">Personal</button>
+            </li>
+            <li>
+              <button style="background-color: orange">Family</button>
+            </li>
+            <li>
+              <button style="background-color: green">Health</button>
+            </li>
+          </ul>
+        </aside>
+
+        <section>
+          <h4>Here are the list of tasks:</h4>
+          <ol>
+            <li>
+              <p>
+                My homework:
+                <a href="https://canvas.uci">(Website)</a>
+              </p>
+
+              <p>I need to complete my physics homework</p>
+
+              <span style="background-color: blue">School</span>
+              <div class="vote-btn">
+                <button>✅ Completed</button>
+              </div>
+            </li>
+            <li class="fact">
+              <p>Complete this project:</p>
+              <p>I need to complete my this project to learn about HTML</p>
+              <span class="tag" style="background-color: yellow">Personal</span>
+              <div class="vote-btn">
+                <button>❌ InComplete</button>
+              </div>
+            </li>
+          </ol>
+        </section>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
