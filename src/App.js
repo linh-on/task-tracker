@@ -2,17 +2,20 @@ import React from "react";
 import Header from "./header";
 import TaskForm from "./task-form";
 import Categories from "./category";
-import Section from "./section";
+import TaskList from "./task-list";
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [showForm, setShowForm] = useState(false);
+
   return (
     <>
-      <Header />
-      <TaskForm />
+      <Header showForm={showForm} setShowForm={setShowForm} />
+      {showForm ? <TaskForm /> : null}
       <main className="main">
         <Categories />
-        <Section />
+        <TaskList />
       </main>
     </>
   );
