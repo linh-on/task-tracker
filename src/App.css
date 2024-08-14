@@ -29,6 +29,14 @@ body {
   margin-bottom: 48px;
 }
 
+.message {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 24px;
+}
+
 .icon {
   display: flex;
   align-items: center;

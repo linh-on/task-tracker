@@ -1,41 +1,3 @@
-const tasks = [
-  {
-    id: 1,
-    text: "I need to complete my physics homework",
-    deadline: "",
-    category: "school",
-    status: true,
-  },
-  {
-    id: 2,
-    text: "I need to complete my this project to learn about HTML",
-    deadline: "",
-    category: "personal",
-    status: false,
-  },
-  {
-    id: 3,
-    text: "I need to exercise 2 times this week",
-    deadline: "",
-    category: "health",
-    status: true,
-  },
-  {
-    id: 4,
-    text: "Hang out with my family once this week",
-    deadline: "",
-    category: "family",
-    status: true,
-  },
-  {
-    id: 5,
-    text: "Set up a laptop for the associate dean",
-    deadline: "",
-    category: "work",
-    status: true,
-  },
-];
-
 const CATEGORIES = [
   { name: "school", color: "#ff6f61" },
   { name: "work", color: "#6b8e23" },
@@ -44,8 +6,7 @@ const CATEGORIES = [
   { name: "health", color: "#da70d6" },
 ];
 
-function Task({ task }) {
-  // const { factObj } = props;
+function Task({ task, setTasks }) {
   return (
     <li class="task">
       <p>{task.text}</p>
@@ -66,13 +27,16 @@ function Task({ task }) {
   );
 }
 
-function TaskList() {
+function TaskList({ tasks, setTasks }) {
+  if (tasks.length === 0) {
+    return <p className="message">You completed all tasks in this category </p>;
+  }
   return (
     <section>
       <h4 className="intro-tasks">Here are the list of tasks:</h4>
       <ol className="tasks-list">
         {tasks.map((task) => (
-          <Task task={task} key={task.id}/>
+          <Task task={task} key={task.id} setTasks={setTasks} />
         ))}
       </ol>
     </section>

@@ -6,12 +6,17 @@ const CATEGORIES = [
   { name: "health", color: "#da70d6" },
 ];
 
-function Categories() {
+function Categories({ setCurrentCategory }) {
   return (
     <aside>
       <ul>
         <li className="category">
-          <button className="btn btn-all">All tasks</button>
+          <button
+            className="btn btn-all"
+            onClick={() => setCurrentCategory("all")}
+          >
+            All tasks
+          </button>
         </li>
         {CATEGORIES.map((cat) => (
           <li className="category">
@@ -20,6 +25,7 @@ function Categories() {
               style={{
                 backgroundColor: cat.color,
               }}
+              onClick={() => setCurrentCategory(cat.name)}
             >
               {cat.name}
             </button>
