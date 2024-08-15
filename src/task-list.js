@@ -4,12 +4,12 @@ import { useState, useEffect } from "react";
 const CATEGORIES = [
   { name: "school", color: "#ff6f61" },
   { name: "work", color: "#6b8e23" },
-  { name: "personal", color: "#4682b4" },
+  { name: "personal", color: "#ff6f61" },
   { name: "family", color: "#8a2be2" },
   { name: "health", color: "#da70d6" },
 ];
 
-function Task({ task }) {
+function Task({ task, fetchTasks }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [status, setStatus] = useState(task.status);
 
@@ -42,6 +42,7 @@ function Task({ task }) {
     } else {
       console.log("Task status updated:", updatedCompletion);
       setStatus(newStatus);
+      fetchTasks();
     }
     setIsUpdating(false);
   }
@@ -49,9 +50,11 @@ function Task({ task }) {
     <li class="task">
       <p>{task.text}</p>
       <p className="deadline" style={deadlineStyle}>
-        {task.daysLeft > 0
+        {status
+          ? ""
+          : task.daysLeft > 0
           ? `${task.daysLeft} days left`
-          : `${task.daysLeft} days late`}{" "}
+          : `${task.daysLeft} days late`}
       </p>
       <span
         class="tag"
@@ -71,7 +74,7 @@ function Task({ task }) {
   );
 }
 
-function TaskList({ tasks, setTasks }) {
+function TaskList({ tasks, setTasks, fetchTasks }) {
   if (tasks.length === 0) {
     return (
       <p className="message">You don't have any tasks in this category </p>
@@ -82,7 +85,12 @@ function TaskList({ tasks, setTasks }) {
       <h4 className="intro-tasks">Here are the list of tasks:</h4>
       <ol className="tasks-list">
         {tasks.map((task) => (
-          <Task task={task} key={task.id} setTasks={setTasks} />
+          <Task
+            task={task}
+            key={task.id}
+            setTasks={setTasks}
+            fetchTasks={fetchTasks}
+          />
         ))}
       </ol>
     </section>

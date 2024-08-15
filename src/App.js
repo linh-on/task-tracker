@@ -3,7 +3,7 @@ import Header from "./header";
 import TaskForm from "./task-form";
 import Categories from "./category";
 import TaskList from "./task-list";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import "./App.css";
 import supabase from "./supabase";
 
@@ -17,27 +17,31 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [currentCategory, setCurrentCategory] = useState("all");
 
-  useEffect(
-    function () {
-      async function getTasks() {
-        setIsLoading(true);
+  const fetchTasks = useCallback(async () => {
+    setIsLoading(true);
 
-        let query = supabase.from("tasks").select("*");
+    let query = supabase.from("tasks").select("*");
 
-        if (currentCategory !== "all") {
-          query = query.eq("category", currentCategory);
-        }
-        const { data: tasks, error } = await query
-          .limit(1000)
-          .order("daysLeft", { ascending: true });
-        if (!error) setTasks(tasks);
-        else alert("There was a problem getting data");
-        setIsLoading(false);
-      }
-      getTasks();
-    },
-    [currentCategory]
-  );
+    if (currentCategory !== "all") {
+      query = query.eq("category", currentCategory);
+    }
+
+    const { data: tasks, error } = await query
+      .order("status", { ascending: true })
+      .order("daysLeft", { ascending: true });
+
+    if (!error) {
+      setTasks(tasks);
+    } else {
+      alert("There was a problem getting data");
+    }
+
+    setIsLoading(false);
+  }, [currentCategory]);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
 
   return (
     <>
@@ -50,7 +54,7 @@ function App() {
         {isLoading ? (
           <Loader />
         ) : (
-          <TaskList tasks={tasks} setTasks={setTasks} />
+          <TaskList tasks={tasks} setTasks={setTasks} fetchTasks={fetchTasks} />
         )}
       </main>
     </>
