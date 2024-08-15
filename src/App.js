@@ -27,7 +27,9 @@ function App() {
         if (currentCategory !== "all") {
           query = query.eq("category", currentCategory);
         }
-        const { data: tasks, error } = await query.limit(1000);
+        const { data: tasks, error } = await query
+          .limit(1000)
+          .order("daysLeft", { ascending: true });
         if (!error) setTasks(tasks);
         else alert("There was a problem getting data");
         setIsLoading(false);
@@ -40,7 +42,9 @@ function App() {
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
-      {showForm ? <TaskForm setTasks={setTasks} setShowForm={setShowForm}/> : null}
+      {showForm ? (
+        <TaskForm setTasks={setTasks} setShowForm={setShowForm} />
+      ) : null}
       <main className="main">
         <Categories setCurrentCategory={setCurrentCategory} />
         {isLoading ? (

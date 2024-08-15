@@ -37,6 +37,11 @@ body {
   margin-top: 24px;
 }
 
+.deadline {
+  color: yellow;
+  font-weight: 400;
+}
+
 .icon {
   display: flex;
   align-items: center;

@@ -19,9 +19,14 @@ function TaskForm({ setTasks, setShowForm }) {
     e.preventDefault();
     if (text && category && text.length <= 200) {
       SetIsUploading(true);
+      const today = new Date();
+      const deadlineDate = new Date(deadline);
+      const timeDiff = deadlineDate - today;
+      const daysLeft = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
       const { data: newTask, error } = await supabase
         .from("tasks")
-        .insert([{ text, category, deadline }])
+        .insert([{ text, category, deadline, daysLeft }])
         .select();
       SetIsUploading(false);
 
