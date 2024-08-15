@@ -6,7 +6,7 @@ const CATEGORIES = [
   { name: "health", color: "#da70d6" },
 ];
 
-function Task({ task, setTasks }) {
+function Task({ task }) {
   return (
     <li class="task">
       <p>{task.text}</p>

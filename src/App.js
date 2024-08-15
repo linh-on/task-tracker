@@ -40,7 +40,7 @@ function App() {
   return (
     <>
       <Header showForm={showForm} setShowForm={setShowForm} />
-      {showForm ? <TaskForm /> : null}
+      {showForm ? <TaskForm setTasks={setTasks} setShowForm={setShowForm}/> : null}
       <main className="main">
         <Categories setCurrentCategory={setCurrentCategory} />
         {isLoading ? (
